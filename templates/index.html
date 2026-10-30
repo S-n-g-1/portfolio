@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} // Terminal Portfolio</title>
+    <style>
+        :root {
+            --bg: #090d16;
+            --terminal-bg: #0d111a;
+            --border: #1f3044;
+            --text: #a9b7c6;
+            --neon-green: #00ff66;
+            --neon-cyan: #00e5ff;
+            --neon-pink: #ff007f;
+            --yellow: #f1fa8c;
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .terminal {
+            width: 100%;
+            max-width: 850px;
+            background: var(--terminal-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+        .terminal-header {
+            background: #131b2e;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .buttons { display: flex; gap: 8px; }
+        .btn { width: 12px; height: 12px; border-radius: 50%; }
+        .btn-close { background: #ff5f56; }
+        .btn-minimize { background: #ffbd2e; }
+        .btn-maximize { background: #27c93f; }
+        .title { margin-left: 15px; font-size: 0.85rem; color: #6272a4; }
+        .terminal-body { padding: 25px; max-height: 75vh; overflow-y: auto; }
+        .prompt { color: var(--neon-cyan); }
+        .command { color: var(--neon-green); font-weight: bold; }
+        .output { margin: 10px 0 20px 0; padding-left: 15px; border-left: 2px solid var(--border); }
+        h3 { color: var(--yellow); margin-top: 0; font-size: 1.1rem; }
+        p, li { font-size: 0.95rem; line-height: 1.5; }
+        ul { padding-left: 20px; }
+        a { color: var(--neon-pink); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .tag {
+            display: inline-block;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 2px;
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--neon-green);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="terminal">
+    <div class="terminal-header">
+        <div class="buttons">
+            <div class="btn btn-close"></div>
+            <div class="btn btn-minimize"></div>
+            <div class="btn btn-maximize"></div>
+        </div>
+        <div class="title">sugianto@sng1-terminal: ~</div>
+    </div>
+    
+    <div class="terminal-body">
+        <div><span class="prompt">visitor@portfolio:~$</span> <span class="command">cat ./bio.txt</span></div>
+        <div class="output">
+            <h3>~/{{ .Name }} (Anto)</h3>
+            <p><strong>Role:</strong> Software & Game Developer | Low-Level Systems & Custom Engines</p>
+            <p>Berfokus membangun arsitektur sistem dari prinsip dasar (*first-principles*), membuat game engine kustom, serta mendesain aplikasi desktop & web yang efisien.</p>
+        </div>
+
+        <div><span class="prompt">visitor@portfolio:~$</span> <span class="command">./list-skills.sh</span></div>
+        <div class="output">
+            <p><strong>Languages & Core:</strong><br>
+            <span class="tag">Go</span> <span class="tag">JavaScript</span> <span class="tag">TypeScript</span> <span class="tag">PHP</span> <span class="tag">C</span> <span class="tag">Python</span> <span class="tag">Java</span></p>
+            <p><strong>Frameworks & Tools:</strong><br>
+            <span class="tag">Laravel</span> <span class="tag">Ebitengine</span> <span class="tag">Raylib</span> <span class="tag">SQLite</span> <span class="tag">Linux/Bash</span> <span class="tag">Git</span></p>
+        </div>
+
+        <div><span class="prompt">visitor@portfolio:~$</span> <span class="command">git log --projects</span></div>
+        <div class="output">
+            <ul>
+                <li><strong><a href="https://github.com/S-n-g-1/ango" target="_blank">ANGO Engine</a></strong>: Custom Go-based visual novel engine dengan DSL parser, bytecode compiler, dan VM mandiri.</li>
+            </ul>
+        </div>
+
+        <div><span class="prompt">visitor@portfolio:~$</span> <span class="command">curl -I https://github.com/S-n-g-1</span></div>
+        <div class="output">
+            <p>GitHub Profile: <a href="https://github.com/S-n-g-1" target="_blank">github.com/S-n-g-1</a></p>
+        </div>
+
+        <div><span class="prompt">visitor@portfolio:~$</span> <span class="cursor"></span></div>
+    </div>
+</div>
+
+</body>
+</html>
