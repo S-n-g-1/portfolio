@@ -9,8 +9,8 @@ import (
 func main() {
 	r := gin.Default()
 
-	// Load file HTML dari folder templates
-	r.LoadHTMLGlob("templates/*")
+	// Load file HTML secara spesifik
+	r.LoadHTMLFiles("templates/index.html")
 
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
@@ -21,5 +21,3 @@ func main() {
 
 	r.Run(":8080")
 }
-
-
